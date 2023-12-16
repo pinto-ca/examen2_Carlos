@@ -1,3 +1,9 @@
+import 'dart:convert';
+
+Book respuestaFromJson(String str) => Book.fromJson(json.decode(str));
+
+String respuestaToJson(Book data) => json.encode(data.toJson());
+
 class Book {
   final String id;
   final String title;
@@ -18,4 +24,11 @@ class Book {
       villains: List<String>.from(json['villains']),
     );
   }
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "title": title,
+        "description": description,
+        "villains": villains,
+      };
 }

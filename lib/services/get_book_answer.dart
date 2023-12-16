@@ -28,10 +28,8 @@ class _BookListScreenState extends State<BookListScreen> {
             final book = bookListProvider.books[index];
             return ListTile(
               title: Text(book.title),
-              subtitle: Text(book.description),
-              onTap: () {
-                // Implement navigation to book details
-              },
+              subtitle: Text(book.id),
+              onTap: () {},
             );
           },
         );

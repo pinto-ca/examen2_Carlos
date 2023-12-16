@@ -9,7 +9,7 @@ class BookListProvider with ChangeNotifier {
   List<Book> get books => _books;
 
   void fetchBooks() async {
-    _books = await _bookService.getBooks();
+    _books = (await _bookService.getBooks()) as List<Book>;
     notifyListeners();
   }
 }
