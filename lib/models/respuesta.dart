@@ -1,34 +1,33 @@
-import 'dart:convert';
+class Respuesta {
+  String title;
+  String price;
+  String description;
+  String image;
+  String category;
 
-Book respuestaFromJson(String str) => Book.fromJson(json.decode(str));
+  Respuesta({
+    required this.title,
+    required this.price,
+    required this.description,
+    required this.image,
+    required this.category,
+  });
 
-String respuestaToJson(Book data) => json.encode(data.toJson());
-
-class Book {
-  final String id;
-  final String title;
-  final String description;
-  final List<String> villains;
-
-  Book(
-      {required this.id,
-      required this.title,
-      required this.description,
-      required this.villains});
-
-  factory Book.fromJson(Map<String, dynamic> json) {
-    return Book(
-      id: json['_id'],
-      title: json['title'],
-      description: json['description'],
-      villains: List<String>.from(json['villains']),
+  factory Respuesta.fromJson(Map<String, dynamic> json) {
+    return Respuesta(
+      title: json["title"],
+      price: json["price"].toString(),
+      description: json["description"],
+      image: json["image"],
+      category: json["category"],
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "id": id,
         "title": title,
+        "price": price,
         "description": description,
-        "villains": villains,
+        "image": image,
+        "category": category,
       };
 }

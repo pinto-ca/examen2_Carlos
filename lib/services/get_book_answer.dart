@@ -1,39 +1,20 @@
-import 'package:examen2_carlos/providers/book_list_provider.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'dart:convert';
+import 'package:examen2_carlos/models/respuesta.dart';
+import 'package:http/http.dart' as http;
 
-class BookListScreen extends StatefulWidget {
-  @override
-  _BookListScreenState createState() => _BookListScreenState();
-}
+class ApiAnswer {
+  final String url = "https://stephen-king-api.onrender.com";
 
-class _BookListScreenState extends State<BookListScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.microtask(() =>
-        Provider.of<BookListProvider>(context, listen: false).fetchBooks());
-  }
+  Future<List<Respuesta>> getRespuesta() async {
+    final response = await http.get(Uri.parse('$url/api/books'));
 
-  @override
-  Widget build(BuildContext context) {
-    return Consumer<BookListProvider>(
-      builder: (context, bookListProvider, child) {
-        if (bookListProvider.books.isEmpty) {
-          return Center(child: CircularProgressIndicator());
-        }
-        return ListView.builder(
-          itemCount: bookListProvider.books.length,
-          itemBuilder: (context, index) {
-            final book = bookListProvider.books[index];
-            return ListTile(
-              title: Text(book.title),
-              subtitle: Text(book.id),
-              onTap: () {},
-            );
-          },
-        );
-      },
-    );
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+      List<Respuesta> respuestas =
+          data.map((item) => Respuesta.fromJson(item)).toList();
+      return respuestas;
+    } else {
+      throw Exception('Error al cargar los datos desde la API');
+    }
   }
 }
