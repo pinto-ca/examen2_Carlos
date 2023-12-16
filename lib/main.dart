@@ -10,18 +10,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => BookListProvider()),
-      ],
-      child: MaterialApp(
+    return MaterialApp(
         title: 'Stephen King Library',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: 
-      ),
-    );
+      );
   }
 }
