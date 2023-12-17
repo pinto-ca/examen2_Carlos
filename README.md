@@ -1,16 +1,8 @@
 # examen2_carlos
 
-A new Flutter project.
+Libreria de Stephen King
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+La siguiente aplicacion permite al usuario conocer a fondo la extensa cantidad de obras literarias que tiene el famoso escritor estadounidense, Stephen King, conocido como uno de los mejores en novelas de terror y misterio. Esta aplicacion fue desarrollada para poner en practica la elaboracion de aplicaciones moviles capaces de consumir APIs, estableciendo conexiones a internet.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
