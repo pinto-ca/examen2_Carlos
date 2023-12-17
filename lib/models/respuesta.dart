@@ -1,4 +1,4 @@
-class Book {
+class Libros {
   final String id;
   final int year;
   final String title;
@@ -13,7 +13,7 @@ class Book {
 
   var isMarked;
 
-  Book({
+  Libros({
     required this.id,
     required this.year,
     required this.title,
@@ -28,8 +28,8 @@ class Book {
     this.isMarked = false,
   });
 
-  factory Book.fromJson(Map<String, dynamic> json) {
-    return Book(
+  factory Libros.fromJson(Map<String, dynamic> json) {
+    return Libros(
       id: json['id'].toString(),
       year: json['Year'] ?? 0,
       title: json['Title'] ?? '',

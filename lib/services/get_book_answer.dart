@@ -5,7 +5,7 @@ class BookService {
   final Dio _dio = Dio();
   final String _baseUrl = 'https://stephen-king-api.onrender.com';
 
-  Future<List<Book>> getBooks() async {
+  Future<List<Libros>> getBooks() async {
     try {
       final response = await _dio.get(
         '$_baseUrl/api/books',
@@ -23,7 +23,7 @@ class BookService {
         final List<dynamic> bookDataList = response.data['data'];
 
         if (bookDataList.isNotEmpty) {
-          return bookDataList.map((book) => Book.fromJson(book)).toList();
+          return bookDataList.map((book) => Libros.fromJson(book)).toList();
         } else {
           throw Exception('No se encontraron libros');
         }
