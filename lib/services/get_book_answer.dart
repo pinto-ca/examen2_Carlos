@@ -1,20 +1,38 @@
-import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:examen2_carlos/models/respuesta.dart';
-import 'package:http/http.dart' as http;
 
-class ApiAnswer {
-  final String url = "https://stephen-king-api.onrender.com";
+class BookService {
+  final Dio _dio = Dio();
+  final String _baseUrl = 'https://stephen-king-api.onrender.com';
 
-  Future<List<Respuesta>> getRespuesta() async {
-    final response = await http.get(Uri.parse('$url/api/books'));
+  Future<List<Book>> getBooks() async {
+    try {
+      final response = await _dio.get(
+        '$_baseUrl/api/books',
+        options: Options(
+          validateStatus: (status) {
+            return status! < 500;
+          },
+        ),
+      );
 
-    if (response.statusCode == 200) {
-      List<dynamic> data = json.decode(response.body);
-      List<Respuesta> respuestas =
-          data.map((item) => Respuesta.fromJson(item)).toList();
-      return respuestas;
-    } else {
-      throw Exception('Error al cargar los datos desde la API');
+      print('Response status code: ${response.statusCode}');
+      print('Response data: ${response.data}');
+
+      if (response.statusCode == 200) {
+        final List<dynamic> bookDataList = response.data['data'];
+
+        if (bookDataList.isNotEmpty) {
+          return bookDataList.map((book) => Book.fromJson(book)).toList();
+        } else {
+          throw Exception('No se encontraron libros');
+        }
+      } else {
+        throw Exception('Error al cargar los libros: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error fetching books: $e');
+      throw Exception('Error fetching books: $e');
     }
   }
 }
