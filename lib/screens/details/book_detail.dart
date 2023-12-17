@@ -8,7 +8,7 @@ class DetalleLibros extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 4, 0, 0),
+      backgroundColor: Color.fromARGB(255, 241, 248, 108),
       appBar: AppBar(
         title: Text(
           'Informacion del Libro',
@@ -26,7 +26,7 @@ class DetalleLibros extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: const Color.fromARGB(255, 255, 255, 255),
+                color: Color.fromARGB(255, 0, 0, 0),
                 decoration: TextDecoration.underline,
               ),
             ),

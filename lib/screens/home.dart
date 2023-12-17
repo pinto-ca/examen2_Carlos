@@ -26,8 +26,9 @@ class _BookListScreenState extends State<BookListScreen> {
           'Libros de Stephen King',
           style: TextStyle(fontFamily: 'Roboto', fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Color.fromARGB(255, 234, 237, 81),
+        backgroundColor: Color.fromARGB(255, 234, 199, 3),
       ),
+      backgroundColor: Color.fromARGB(255, 224, 194, 28),
       body: Consumer<ListaProvider>(
         builder: (context, bookListProvider, child) {
           if (bookListProvider.books.isEmpty) {
@@ -40,7 +41,7 @@ class _BookListScreenState extends State<BookListScreen> {
               return Card(
                 elevation: 4,
                 margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                color: Colors.white,
+                color: Color.fromARGB(255, 255, 235, 56),
                 child: ListTile(
                   leading: ClipRRect(
                     borderRadius: BorderRadius.circular(8),
@@ -67,7 +68,7 @@ class _BookListScreenState extends State<BookListScreen> {
                     icon: Icon(
                       book.isMarked ? Icons.favorite : Icons.favorite_border,
                       color: book.isMarked
-                          ? Color.fromARGB(255, 185, 165, 9)
+                          ? Color.fromARGB(255, 0, 0, 0)
                           : Colors.grey,
                     ),
                     onPressed: () {
@@ -91,7 +92,7 @@ class _BookListScreenState extends State<BookListScreen> {
         },
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Color.fromARGB(255, 86, 155, 233),
+        color: Color.fromARGB(255, 194, 181, 12),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -107,8 +108,8 @@ class _BookListScreenState extends State<BookListScreen> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  onPrimary: Color.fromARGB(255, 234, 237, 81),
+                  primary: Color.fromARGB(255, 240, 231, 68),
+                  onPrimary: Color.fromARGB(255, 7, 7, 0),
                 ),
                 child: Text('Ver Libros Favoritos'),
               ),
